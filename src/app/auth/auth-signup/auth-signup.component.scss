@@ -1,0 +1,15 @@
+.bx--loading__stroke
+{
+    stroke: white !important;
+}
+.bx--loading
+{
+    width: 20px !important;
+    height: 20px !important;
+    display: inline-block;    
+    margin-left: 20px;
+}
+
+.btn-text, .bx--loading{
+    vertical-align: center;
+}
