@@ -1,0 +1,73 @@
+<div fxFill fxLayout="column">
+    <youpez-header>
+      <youpez-header-title>
+        Vos biens immobiliés
+      </youpez-header-title>
+      <youpez-header-tools>
+        <button ibmButton="primary" size="sm" (click)="onCreate()">
+          Nouveau
+          <svg class="bx--btn__icon" ibmIconAdd size="20"></svg>
+        </button>
+      </youpez-header-tools>
+    </youpez-header>
+      <div fxFlex class="relative">
+        <youpez-sidenav-container panel="solid">
+            <div class="app-a-box app-scrollbar-fix">
+                <ng-scrollbar>
+                  <div fxFill fxLayout="column">
+                    <div fxFlex class="relative">
+                      <div fxLayout="row wrap">
+                        <div fxFlex="100%">
+      
+                          <div class="app-header-subheader app-header-subheader--transparent app-header-subheader--left-alt app-header-subheader--right-alt" style="height: 65px">
+                            <div class="app-ibm-btn-merge mr-2" fxHide fxShow.gt-sm>
+                                <button ibmButton="tertiary" size="sm" class="bx--btn--icon-only">
+                                  <svg class="bx--btn__icon" ibmIconRenew size="32"></svg>
+                                </button>
+                              </div>
+                            <div class="ml-3" style="width:270px">
+                              <ibm-search placeholder="Rechercher un bien..." size="sm"></ibm-search>
+                            </div>
+                            <div class="flex-1 flex justify-end">
+                              <button
+                                ibmButton="ghost" size="sm"
+                                class="bx--btn--icon-only bx--btn--remove-tooltip">
+                                <svg class="bx--btn__icon" ibmIconSettings size="32"></svg>
+                              </button>
+                              <button
+                                ibmButton="ghost" size="sm"
+                                class="bx--btn--icon-only bx--btn--remove-tooltip">
+                                <svg class="bx--btn__icon" ibmIconTableOfContents size="32"></svg>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="app-subtitle app-subtitle--cards mt-2">Biens (2)</div>
+                      <div fxLayout="row wrap" class="app-card-row-holder">
+                        <ng-container *ngFor="let file of properties">
+                          <div fxFlex="100%" fxFlex.gt-md="16.66%">
+                            <div class="app-card app-card--select">
+                              <div class="app-card__content__alt">
+                                <div class="">
+                                  <div class="px-10 py-10 text-center app-bg-decorative mb-2">
+                                    <youpez-ibm-icon iconName="document" iconSize="32"></youpez-ibm-icon>
+                                  </div>
+                                  <div>
+                                    <div class="app-expressive-heading-01 truncate">{{file.name}}</div>
+                                    <div class="app-helper-text-01 mb-2">{{file.size}}</div>
+                                    <div class="app-label-01 text-muted">{{file.accessed}}</div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </ng-container>
+                      </div>
+                    </div>
+                  </div>
+                </ng-scrollbar>
+              </div>
+        </youpez-sidenav-container>
+      </div>
+</div>

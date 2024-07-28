@@ -20,10 +20,11 @@ import {AppRoutingModule} from './app-routing.module'
 import {AppComponent} from './app.component'
 import {environment} from '../environments/environment'
 import { NgxsModule } from '@ngxs/store'
+import { UserProfileState, UserState } from './shared/store';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -33,7 +34,7 @@ import { NgxsModule } from '@ngxs/store'
     CoreModule,
     HttpClientModule,
     SharedModule,
-    
+
     //Ngxs module
     NgxsModule.forRoot(
       [

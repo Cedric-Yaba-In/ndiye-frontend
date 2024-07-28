@@ -5,7 +5,7 @@ const routes: Routes = [
   {
     path: 'app',
     data:{
-      breadcrumb: 'Home'
+      breadcrumb: 'Acceuil'
     },
     loadChildren: () => import('./main/main.module').then(m => m.MainModule)
   },
@@ -15,7 +15,7 @@ const routes: Routes = [
   },
   {
     path: '**',
-    redirectTo: '/auth/sigin',
+    redirectTo: '/auth/signin',
     pathMatch: 'full',
   },
 ]

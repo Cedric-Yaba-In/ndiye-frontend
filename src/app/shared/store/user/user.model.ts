@@ -1,8 +1,7 @@
-import { User, UserCredential } from "@angular/fire/auth";
 
 export interface UserModel {
 
-    name?:string;
+    fullName?:string;
 
     email?:string;
 

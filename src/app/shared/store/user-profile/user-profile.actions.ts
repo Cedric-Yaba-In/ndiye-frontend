@@ -22,6 +22,13 @@ export namespace UserProfileAction
         constructor(public email:string,public password:string){}
     }
 
+     //Forgot Action
+     export class ForgotPasswordUserProfile
+     {
+         static readonly type = '[UserProfile] ForgetPassword UserProfile'
+         constructor(public email:string){}
+     }
+
     //Sigup User Action
     export class SignupSimpleUserProfile
     {
@@ -29,12 +36,6 @@ export namespace UserProfileAction
         constructor(public email:string,public password:string,public username:string){}
     }
 
-    //Sigup User Action
-    export class SignupDoctorUserProfile
-    {
-        static readonly type = '[UserProfile] Siggnup doctor UserProfile'
-        constructor(public email:string,public password:string){}
-    }
 
     //Set user profil
     export class SetUserProfile

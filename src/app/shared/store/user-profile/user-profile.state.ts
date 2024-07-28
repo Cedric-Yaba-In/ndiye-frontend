@@ -4,8 +4,9 @@ import { Injectable } from "@angular/core";
 import { UserProfileAction } from "./user-profile.actions";
 import { UserProfileService } from "./user-profile.service";
 // import { ToastrService } from "ngx-toastr";
-import { catchError, of, tap, throwError } from "rxjs";
+import { of,  throwError } from "rxjs";
 import { AuthService } from "./auth.service";
+import { tap,catchError } from "rxjs/operators";
 
 export class UserProfileStateModel {
     userProfile:UserProfileModel
@@ -59,7 +60,7 @@ export class UserProfileState{
                 (result)=>{
                     ctx.patchState({
                         loadingUserProfile:false,
-                        userProfile:result.data.toJSON()
+                        userProfile:result.data
                     })
                     // this._toastrService.success(`Profil utilisateur modifié avec success`, 'UserProfile');
                 }
@@ -88,7 +89,7 @@ export class UserProfileState{
                 (result)=>{
                     ctx.patchState({
                         loadingUserProfile:false,
-                        userProfile:result.data.toJSON()
+                        userProfile:result.data
                     })
                     // this._toastrService.success(`Profil utilisateur modifié avec success`, 'UserProfile');
                 }

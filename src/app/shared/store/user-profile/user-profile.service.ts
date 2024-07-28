@@ -4,6 +4,7 @@ import { UserProfileModel } from "./user-profile.model";
 import { HttpClient } from "@angular/common/http";
 import { Observable } from "rxjs";
 import { ApiResultFormat } from "../global";
+import { environment } from "src/environments/environment";
 
 @Injectable({
     providedIn:'root'
@@ -20,8 +21,7 @@ export class UserProfileService
      */
     getUserProfile(email): Observable<ApiResultFormat<UserProfileModel>>
     {
-        return null;
-        // return this._httpClient.get<ApiResultFormat<UserProfileModel>>(`${environment.apiUrl}/user/profil/${email}`)
+        return this._httpClient.get<ApiResultFormat<UserProfileModel>>(`${environment.apiUrl}/user/profil/${email}`)
     }
 
     /**
@@ -29,9 +29,7 @@ export class UserProfileService
      */
     updateUserProfile(contact:UserProfileModel,id:string): Observable<ApiResultFormat<UserProfileModel>>
     {
-        return null;
-
-        // return this._httpClient.put<ApiResultFormat<UserProfileModel>>(`${environment.apiUrl}/user/profile/${id}`, contact)
+        return this._httpClient.put<ApiResultFormat<UserProfileModel>>(`${environment.apiUrl}/user/profile/${id}`, contact)
     }
 
 }

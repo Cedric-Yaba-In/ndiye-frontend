@@ -8,7 +8,7 @@
             <div class="app-mini-sidebar__list__item__pill"
                  placement="right"
                  container="body"
-                 ngbTooltip="Global search">
+                 ngbTooltip="Recherche globale">
               <youpez-ibm-icon iconName="search" iconSize="24"></youpez-ibm-icon>
             </div>
           </div>
@@ -28,7 +28,7 @@
                 <div class="app-list-header-alt" ngbDropdownItem>
                   <div class="flex justify-between items-center">
                     <div>notifications</div>
-                    <div class="app-helper-text-01 app-color-danger">+ 12</div>
+                    <div class="app-helper-text-01 app-color-danger">+ {{notifications.length}}</div>
                   </div>
                 </div>
                 <div fxFlex>
@@ -78,7 +78,7 @@
                   </div>
                 </div>
                 <div class="app-list-footer-alt text-center app-helper-text-01 mb-2" ngbDropdownItem>
-                  <a>See all</a>
+                  <a>Voir tout</a>
                 </div>
               </div>
             </div>
@@ -99,7 +99,7 @@
                 <div class="app-list-header-alt" ngbDropdownItem>
                   <div class="flex justify-between items-center">
                     <div>Messages</div>
-                    <div class="app-helper-text-01 app-color-success">+ 5</div>
+                    <div class="app-helper-text-01 app-color-success">+ {{messages.length}}</div>
                   </div>
                 </div>
                 <div fxFlex>
@@ -144,7 +144,7 @@
                   </div>
                 </div>
                 <div class="app-list-footer-alt text-center app-helper-text-01 mb-2" ngbDropdownItem>
-                  <a>See all</a>
+                  <a>Voir tout</a>
                 </div>
               </div>
             </div>
@@ -171,15 +171,17 @@
                     <div fxLayout="row wrap" class="app-border-b">
                       <div fxFlex="50%" class="app-border-r">
                         <div class="app-card app-card--select app-card--m-0" ngbDropdownItem
-                             routerLink="/app/scrum-board">
+                             >
+                             <!-- routerLink="/app/scrum-board"  -->
                           <div class="app-card__content text-center">
                             <youpez-ibm-icon iconName="dashboardReference" iconSize="32"></youpez-ibm-icon>
-                            <div class="app-productive-heading-01 mt-2">SCRUM board</div>
+                            <div class="app-productive-heading-01 mt-2">Finance</div>
                           </div>
                         </div>
                       </div>
                       <div fxFlex="50%">
-                        <div class="app-card app-card--select app-card--m-0" ngbDropdownItem routerLink="/app/tasks">
+                        <div class="app-card app-card--select app-card--m-0" ngbDropdownItem >
+                          <!-- routerLink="/app/tasks" -->
                           <div class="app-card__content text-center">
                             <youpez-ibm-icon iconName="task" iconSize="32"></youpez-ibm-icon>
                             <div class="app-productive-heading-01 mt-2">Tasks</div>
@@ -187,7 +189,7 @@
                         </div>
                       </div>
                     </div>
-                    <div fxLayout="row wrap" class="app-border-b">
+                    <!-- <div fxLayout="row wrap" class="app-border-b">
                       <div fxFlex="50%" class="app-border-r">
                         <div class="app-card app-card--select app-card--m-0" ngbDropdownItem
                              routerLink="/app/file-manager">
@@ -205,8 +207,8 @@
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div fxLayout="row wrap" class="">
+                    </div> -->
+                    <!-- <div fxLayout="row wrap" class="">
                       <div fxFlex="50%" class="app-border-r">
                         <div class="app-card app-card--select app-card--m-0" ngbDropdownItem routerLink="/app/messages">
                           <div class="app-card__content text-center">
@@ -223,7 +225,7 @@
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> -->
                   </div>
                 </div>
               </div>
@@ -240,7 +242,7 @@
       <div class="app-mini-sidebar__list__item__pill"
            placement="right"
            container="body"
-           ngbTooltip="Help"
+           ngbTooltip="Aide"
            ngbDropdownToggle>
         <youpez-ibm-icon iconName="help" iconSize="24"></youpez-ibm-icon>
       </div>
@@ -251,7 +253,7 @@
               <youpez-ibm-icon iconName="email" iconSize="20"></youpez-ibm-icon>
             </div>
             <div class="app-list__item__content">
-              Contact Support
+              Support
             </div>
           </div>
           <div class="app-list__item" ngbDropdownItem routerLink="/app/application/support">
@@ -259,7 +261,7 @@
               <youpez-ibm-icon iconName="cloudApp" iconSize="20"></youpez-ibm-icon>
             </div>
             <div class="app-list__item__content">
-              Feature Request
+              Requête de fonctionnalités
             </div>
           </div>
           <div class="app-list__item" ngbDropdownItem routerLink="/app/application/changelog">
@@ -267,7 +269,7 @@
               <youpez-ibm-icon iconName="bullhorn" iconSize="20"></youpez-ibm-icon>
             </div>
             <div class="app-list__item__content">
-              What's new
+              Nouveaté
             </div>
           </div>
           <div class="app-list__item" ngbDropdownItem routerLink="/app/application/welcome">
@@ -275,7 +277,7 @@
               <youpez-ibm-icon iconName="buildingInsights1" iconSize="20"></youpez-ibm-icon>
             </div>
             <div class="app-list__item__content">
-              About
+              A propos
             </div>
           </div>
           <div class="app-list__item" ngbDropdownItem routerLink="/app/pricing/modern">
@@ -283,7 +285,7 @@
               <youpez-ibm-icon iconName="tag" iconSize="20"></youpez-ibm-icon>
             </div>
             <div class="app-list__item__content">
-              Pricing
+              Prix
             </div>
           </div>
         </div>
@@ -295,7 +297,7 @@
       <div class="app-mini-sidebar__list__item__pill"
            placement="right"
            container="body"
-           ngbTooltip="Account details"
+           ngbTooltip="Details du compte"
            ngbDropdownToggle>
         <youpez-ibm-icon iconName="user" iconSize="24"></youpez-ibm-icon>
       </div>
@@ -307,7 +309,7 @@
             </div>
             <div class="app-list__item__content mr-4">
               <div>
-                <div class="app-helper-text-01">Signed in as</div>
+                <div class="app-helper-text-01">Connecté en tant que</div>
                 <div class="app-expressive-heading-02">David Robson</div>
               </div>
             </div>
@@ -315,23 +317,23 @@
           <div class="app-list__divider"></div>
           <div class="app-list__item" ngbDropdownItem routerLink="/app/profile">
             <div class="app-list__item__content">
-              Profile
+              Profil
             </div>
           </div>
           <div class="app-list__item" ngbDropdownItem routerLink="/app/pricing/modern">
             <div class="app-list__item__content">
-              Plan & Upgrade
+              Plan 
             </div>
           </div>
           <div class="app-list__item" ngbDropdownItem routerLink="/app/user/settings">
             <div class="app-list__item__content">
-              Settings
+              Parametre
             </div>
           </div>
           <div class="app-list__divider"></div>
           <div class="app-list__item mb-2" ngbDropdownItem routerLink="/auth/modern/signin">
             <div class="app-list__item__content">
-              Logout
+              Deconnexion
             </div>
           </div>
         </div>

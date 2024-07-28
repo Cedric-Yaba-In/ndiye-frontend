@@ -1,4 +1,3 @@
-import { User, UserCredential } from "@angular/fire/auth";
 
 export interface UserProfileModel {
 

@@ -1,10 +1,10 @@
 <div class="mb-8" fxHide fxShow.lt-md>
   <youpez-logo class="cursor-pointer" logoWidth="130px"></youpez-logo>
 </div>
-<h1 class="app-expressive-heading-06 mb-1">Sign in</h1>
+<h1 class="app-expressive-heading-06 mb-1">Connectez-vous</h1>
 <div class="app-body-long-02 mb-8">
-  Don't have an account?
-  <a ibmLink routerLink="../signup">Sign up</a>
+  Vous n'avez pas de compte?
+  <a ibmLink routerLink="../signup">Creer un compte</a>
 </div>
 <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
   <div class="app-form">
@@ -12,8 +12,8 @@
       <ibm-label
         [helperText]="''"
         [invalid]="isValid('email')"
-        [invalidText]="'This field is required'">
-        Email address
+        [invalidText]="'Email obligatoire'">
+        Adresse email
         <input
           formControlName="email"
           ibmText
@@ -21,7 +21,7 @@
           [invalid]="isValid('email')"
           [disabled]="false"
           theme="light"
-          [placeholder]="'Email address'"
+          [placeholder]="'Votre email'"
           [autocomplete]="true">
       </ibm-label>
     </div>
@@ -29,8 +29,8 @@
       <ibm-label
         [helperText]="''"
         [invalid]="isValid('password')"
-        [invalidText]="'This field is required'">
-        Password
+        [invalidText]="'Mot de passe obligatoire'">
+        Mot de passe
         <input
           type="password"
           formControlName="password"
@@ -39,7 +39,7 @@
           [invalid]="isValid('password')"
           [disabled]="false"
           theme="light"
-          [placeholder]="'Password'"
+          [placeholder]="'Votre mot de passe'"
           [autocomplete]="true">
       </ibm-label>
     </div>
@@ -47,20 +47,23 @@
       <div class="flex justify-between items-center">
         <ibm-checkbox
           checked="true">
-          Remember me?
+          Se rappeler de moi?
         </ibm-checkbox>
-        <a ibmLink routerLink="../forgot-password">Forgot password?</a>
+        <a ibmLink routerLink="../forgot-password">Mot de passe oublié?</a>
       </div>
     </div>
     <div class="app-form__submit">
-      <button type="submit" class="app-ibm-btn-full" ibmButton="primary" size="field">
-        Sign In
-        <svg class="bx--btn__icon" ibmIconArrowRight size="20"></svg>
+      <button type="submit" class="app-ibm-btn-full" [disabled]="waittingResponse || formGroup.invalid" ibmButton="primary" size="field">
+        <ibm-loading *ngIf="waittingResponse; else noWaitingResponse"></ibm-loading>
+        <ng-template #noWaitingResponse>
+          <span class="btn-text">Connexion</span>
+          <svg class="bx--btn__icon" ibmIconArrowRight size="20"></svg>
+        </ng-template>
       </button>
     </div>
   </div>
 </form>
-<div class="app-separator mt-8 mb-8">or Sign In with</div>
+<div class="app-separator mt-8 mb-8">Ou se connectez avec</div>
 <div fxLayout="row" class="">
   <div fxFlex="50" class="mr-1">
     <button class="w-full"

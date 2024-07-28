@@ -4,7 +4,8 @@ import { Injectable } from "@angular/core";
 import { UserAction } from "./user.actions";
 import { UserService } from "./user.service";
 // import { ToastrService } from "ngx-toastr";
-import { catchError, of, tap, throwError } from "rxjs";
+import { of, throwError } from "rxjs";
+import { catchError, tap } from "rxjs/operators";
 
 export class UserStateModel {
     users:UserModel[]

@@ -1,9 +1,13 @@
 import {Component, OnInit, ViewEncapsulation} from '@angular/core'
 import {FormBuilder, FormGroup, Validators} from "@angular/forms"
 import {Router} from "@angular/router"
-import { Store } from '@ngxs/store'
+import { Actions, ofActionCompleted, ofActionErrored, ofActionSuccessful, Store } from '@ngxs/store'
 import {NotificationService} from "carbon-components-angular"
+import {UserProfileAction} from "src/app/shared/store"
 
+/**
+ * Signup component
+ */
 @Component({
   selector: 'app-auth-signup',
   templateUrl: './auth-signup.component.html',
@@ -19,7 +23,10 @@ export class AuthSignupComponent implements OnInit {
   constructor(protected formBuilder: FormBuilder,
               private router: Router,
               private notificationService: NotificationService,
-            private _store:Store) {
+            private _store:Store,
+            private _ngxsAction:Actions
+
+          ) {
   }
 
   ngOnInit(): void {
@@ -30,23 +37,47 @@ export class AuthSignupComponent implements OnInit {
 
       condition: [true],
     }, {updateOn: 'blur'})
+
+    this._ngxsAction.pipe(ofActionSuccessful(UserProfileAction.SignupSimpleUserProfile)).subscribe((value)=>{
+      // Navigate to the parent
+      this.waittingResponse=false;
+      this.router.navigate(['/dasboard']);
+      this.notificationService.showToast({
+        type: "success",
+        title: "Création de compte",
+        subtitle: "Compte créer avec success! Veuillez vous connecter! ",
+        target: "body",
+        message: "message",
+        duration: 2000,
+      })
+      }
+    );
+    this._ngxsAction.pipe(ofActionCompleted(UserProfileAction.SignupSimpleUserProfile)).subscribe(
+      (value) => {
+        this.waittingResponse=false;
+        
+      }
+    )
+
+    this._ngxsAction.pipe(ofActionErrored(UserProfileAction.SignupSimpleUserProfile)).subscribe(
+      (value) => {
+        this.waittingResponse=false;
+        this.notificationService.showToast({
+          type: "error",
+          title: "Création de compte",
+          subtitle: "Une erreur c'est produite ",
+          target: "body",
+          message: "message",
+          duration: 2000,
+        })
+      })
   }
 
   onSubmit() {
     this.formGroup.markAllAsTouched()
-
+  
     this._store.dispatch(new UserProfileAction.SignupSimpleUserProfile(this.formGroup.value.email,this.formGroup.value.password,this.formGroup.value.fullName));
-
-    /*this.router.navigate(['/app'])
-    this.notificationService.showToast({
-      type: "info",
-      title: "Sample toast",
-      subtitle: "Sample subtitle message",
-      caption: "Sample caption",
-      target: "body",
-      message: "message",
-      duration: 2000,
-    })*/
+    
   }
 
   isValid(name) {
