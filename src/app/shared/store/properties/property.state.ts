@@ -15,10 +15,22 @@ export class PropertyStateModel {
 
 
 @State<PropertyStateModel>({
-    name: "propertylist",
+    name: "properties",
     defaults:{
         loadingProperty:false,
-        properties:[],
+        properties:[
+            {
+                name: 'SmartCity',
+                description: 'SmartCity',
+                location: 'Carefour Prison',
+                id: '1204',
+                code: '1204',
+                geolocation: {
+                    lat: 0,
+                    lng: 0
+                }
+              },
+        ],
         initLoadingState:'NO_LOADED',
     }
 })
@@ -34,7 +46,7 @@ export class PropertyState{
         return state.loadingProperty
     }
     @Selector() 
-    static setlectStatePropertys(state:PropertyStateModel)
+    static setlectStateProperties(state:PropertyStateModel)
     {
         return state.properties
     }
@@ -42,7 +54,7 @@ export class PropertyState{
     static selectStateProperty(propertyId)
     {
         return createSelector([PropertyState],(state)=>{
-            let data=state.properties.find((u)=>u.uid==propertyId)
+            let data=state.properties.find((u)=>u.id==propertyId)
             if(data) return data
             return null;
         })
@@ -117,6 +129,26 @@ export class PropertyState{
             loadingProperty:true
         })
         return this._propertysService.getProperty(propertyId).pipe(
+            tap(
+                result => {
+                    ctx.patchState({
+                        loadingProperty:false,
+                        properties:[...state.properties, result.data]
+                    })
+                }
+            )
+        )
+    }
+
+    @Action(PropertyAction.CreateProperty)
+    createProperty(ctx:StateContext<PropertyStateModel>,{property}:PropertyAction.CreateProperty)
+    {
+        const state = ctx.getState();
+
+        ctx.patchState({
+            loadingProperty:true
+        })
+        return this._propertysService.createProperty(property).pipe(
             tap(
                 result => {
                     ctx.patchState({

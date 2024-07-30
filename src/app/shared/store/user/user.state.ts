@@ -42,7 +42,7 @@ export class UserState{
     static selectStateUser(userId)
     {
         return createSelector([UserState],(state)=>{
-            let data=state.users.find((u)=>u.uid==userId)
+            let data=state.users.find((u)=>u.id==userId)
             if(data) return data
             return null;
         })
@@ -70,7 +70,7 @@ export class UserState{
             tap(
                 (result)=>{
                     const data = [...state.users]
-                    let index = data.findIndex((u)=>u.uid==id);
+                    let index = data.findIndex((u)=>u.id==id);
                     if(index>-1) data[index]=result.data;
                     ctx.patchState({
                         loadingUser:false,
@@ -109,7 +109,7 @@ export class UserState{
     fetchUser(ctx:StateContext<UserStateModel>,{userId}:UserAction.FetchUser)
     {
         const state = ctx.getState();
-        let index = state.users.findIndex((u)=>u.uid==userId);
+        let index = state.users.findIndex((u)=>u.id==userId);
 
         if(index>-1) return of(true);
 
@@ -134,7 +134,7 @@ export class UserState{
         const state = ctx.getState();
         let notFounds = [];
         usersId.forEach((id)=>{
-            let index = state.users.findIndex((u)=>u.uid==id);
+            let index = state.users.findIndex((u)=>u.id==id);
             if(index==-1) notFounds.push(id);
         })
         if(notFounds.length==0 && state.initLoadingState=="LOADED") return of(true);

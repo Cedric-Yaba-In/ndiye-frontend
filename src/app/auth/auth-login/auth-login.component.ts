@@ -74,7 +74,7 @@ export class AuthLoginComponent implements OnInit {
 
   onSubmit() {
     this.formGroup.markAllAsTouched()
-    
+    this.waittingResponse=true;    
     this._store.dispatch(new UserProfileAction.LoginUserProfile(this.formGroup.value.email,this.formGroup.value.password));
     
   }

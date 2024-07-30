@@ -1,31 +1,34 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
+import { Select } from '@ngxs/store';
+import { Observable } from 'rxjs';
+import { PropertyModel, PropertyState } from 'src/app/shared/store';
+import { AddPropertyComponent } from '../add-property/add-property.component';
 
 @Component({
   selector: 'app-list-property',
   templateUrl: './list-property.component.html',
-  styleUrls: ['./list-property.component.scss']
+  styleUrls: ['./list-property.component.scss'],
+  encapsulation:ViewEncapsulation.None
 })
 export class ListPropertyComponent implements OnInit {
 
 
-  public properties = [
-    {
-      name: 'README.md',
-      accessed: '5 mins ago',
-      size: '2.2GB',
-    },    
-  ]
-  public selectedItem = {
-    name: 'import-restrictions.yaml',
-    accessed: '5 mins ago',
-    size: '0.1GB',
+  @Select(PropertyState.setlectStateProperties) properties$:Observable<PropertyModel[]>;
+  private addPropertyDialogRef: MatDialogRef<AddPropertyComponent>;
+
+  constructor(private dialog: MatDialog) { }
+
+  ngOnInit(): void {
+
   }
-  constructor() { }
 
   onCreate() {
-    
+    this.addPropertyDialogRef = this.dialog.open(AddPropertyComponent, {
+      viewContainerRef:null,
+      disableClose: true,
+      role: 'alertdialog',
+      width: '500px'
+    })
   }
-  ngOnInit(): void {
-  }
-
 }

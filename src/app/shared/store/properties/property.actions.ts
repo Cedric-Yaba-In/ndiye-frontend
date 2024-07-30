@@ -31,6 +31,13 @@ export namespace PropertyAction
         constructor(public property:any){}
     }
 
+    //Create property
+    export class CreateProperty
+    {
+        static readonly type = '[Property] Create Property'
+        constructor(public property:any){}
+    }
+
 
     //Change loading state
     export class updateLoadingPropertyState

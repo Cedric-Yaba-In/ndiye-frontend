@@ -13,5 +13,5 @@ export interface UserModel {
 
     location?:string;
 
-    uid?:string;
+    id?:string;
 }

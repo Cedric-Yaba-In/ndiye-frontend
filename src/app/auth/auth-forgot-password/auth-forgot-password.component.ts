@@ -66,6 +66,7 @@ export class AuthForgotPasswordComponent implements OnInit {
   onSubmit() {
     this.formGroup.markAllAsTouched()
     this._store.dispatch(new UserProfileAction.ForgotPasswordUserProfile(this.formGroup.value.email));
+    this.waittingResponse=true;
 
 
   }

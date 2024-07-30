@@ -63,7 +63,7 @@ export class LayoutComponent implements OnInit, OnDestroy {
             type: 'ibm-icon',
             name: 'home',
           },
-          url: '/app/scrum-board',
+          url: '/app/properties/list',
         },
         {
           name: 'Locataire',

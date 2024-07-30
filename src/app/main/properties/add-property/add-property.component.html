@@ -1,0 +1,75 @@
+<ng-template #invalidText>
+    <img src="assets/img/avatar/avatar3.jpg" class="app-img-select__item w-8 rounded"/>
+  </ng-template>
+  <form [formGroup]="formGroup" (ngSubmit)="onSubmit()">
+    <div fxFill fxLayout="column" class="app-bg-container overflow-hidden">
+        <div class="px-4 py-4 flex">
+          <div class="app-productive-heading-03 font-bold">Ajouter un bien</div>
+          <div class="flex-1 flex justify-end">
+            <button (click)="onClose()" ibmButton="ghost" size="sm" class="bx--btn--icon-only">
+              <svg class="bx--btn__icon" ibmIconClose size="32"></svg>
+            </button>
+          </div>
+        </div>
+        <div fxFlex>
+          <div class="app-content app-content--default">
+            <div class="app-form">
+              <div class="app-form__item">
+                <ibm-label helperText="" [invalid]="isValid('name')"
+                [invalidText]="'Nom du bien obligatoire'">
+                  Nom du bien <span class="text-red-600">*</span>
+                  <input
+                    formControlName="name"
+                    ibmText
+                    size="md"
+                    theme="light">
+                </ibm-label>
+              </div>
+              
+              <div class="app-form__item">
+                    <ibm-label helperText="" [invalid]="isValid('localisation')"
+                    [invalidText]="'Localisation du bien obligatoire'">
+                      Localisation <span class="text-red-600">*</span>
+                      <input
+                        ibmText
+                        formControlName="localisation"
+                        size="md"
+                        theme="light">
+                    </ibm-label>            
+              </div>
+              <div class="">
+                <ibm-label
+                  [helperText]="''">
+                  Description
+                  <textarea
+                    ibmTextArea
+                    formControlName="description"
+                    theme="light"
+                    [rows]="3"
+                    [cols]="3"
+                    aria-label="textarea"></textarea>
+                </ibm-label>
+              </div>
+            </div>
+      
+          </div>
+        </div>
+        <div class="px-4 py-4 flex justify-end app-border-t">
+          <button (click)="onClose()"
+                  ibmButton="secondary"
+                  size="field"
+                  class="mr-1">
+            Annuler
+          </button>
+          <button ibmButton="primary" size="field" [disabled]="waittingResponse || formGroup.invalid" type="submit">
+            <ibm-loading *ngIf="waittingResponse; else noWaitingResponse"></ibm-loading>
+            <ng-template #noWaitingResponse>
+              <span class="btn-text">Ajouter</span>
+              <svg class="bx--btn__icon" ibmIconAdd size="20"></svg>
+            </ng-template>
+          </button>
+        </div>
+      </div>
+      
+  </form>
+ 

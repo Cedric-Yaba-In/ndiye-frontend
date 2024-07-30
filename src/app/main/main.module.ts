@@ -14,7 +14,13 @@ import {SupportComponent} from './application/support/support.component'
 import {ChangelogComponent} from './application/changelog/changelog.component'
 import {WelcomeComponent} from './welcome/welcome.component'
 import {GettingStartedComponent} from './application/getting-started/getting-started.component'
-import { ListPropertyComponent } from './properties/list-property/list-property.component'
+import { ListPropertyComponent } from './properties/list-property/list-property.component';
+import { ShowPropertyComponent } from './properties/show-property/show-property.component';
+import { AddPropertyComponent } from './properties/add-property/add-property.component';
+import { PropertyRoomComponent } from './properties/components/property-room/property-room.component';
+import { PropertyFinanceComponent } from './properties/components/property-finance/property-finance.component';
+import { PropertyLocataireComponent } from './properties/components/property-locataire/property-locataire.component';
+import { AddPropertyRoomComponent } from './properties/components/add-property-room/add-property-room.component'
 
 @NgModule({
   declarations: [
@@ -24,7 +30,13 @@ import { ListPropertyComponent } from './properties/list-property/list-property.
     ManualComponent,
     SupportComponent,
     WelcomeComponent,
-    ListPropertyComponent
+    ListPropertyComponent,
+    ShowPropertyComponent,
+    AddPropertyComponent,
+    PropertyRoomComponent,
+    PropertyFinanceComponent,
+    PropertyLocataireComponent,
+    AddPropertyRoomComponent
   ],
   imports: [
     CommonModule,

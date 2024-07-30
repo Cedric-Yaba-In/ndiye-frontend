@@ -45,18 +45,28 @@
                       </div>
                       <div class="app-subtitle app-subtitle--cards mt-2">Biens (2)</div>
                       <div fxLayout="row wrap" class="app-card-row-holder">
-                        <ng-container *ngFor="let file of properties">
-                          <div fxFlex="100%" fxFlex.gt-md="16.66%">
+                        <ng-container *ngFor="let property of properties$ | async">
+                          <div [routerLink]="['/app/properties',property.id]" fxFlex="100%" fxFlex.gt-md="16.66%">
                             <div class="app-card app-card--select">
                               <div class="app-card__content__alt">
                                 <div class="">
                                   <div class="px-10 py-10 text-center app-bg-decorative mb-2">
-                                    <youpez-ibm-icon iconName="document" iconSize="32"></youpez-ibm-icon>
+                                    <!-- <youpez-ibm-icon iconName="building-insights-1" iconSize="32"></youpez-ibm-icon> -->
+                                    <ibm-icon-building-insights-1 size="32" innerClass="inner-class" class="host-class"></ibm-icon-building-insights-1>
                                   </div>
                                   <div>
-                                    <div class="app-expressive-heading-01 truncate">{{file.name}}</div>
-                                    <div class="app-helper-text-01 mb-2">{{file.size}}</div>
-                                    <div class="app-label-01 text-muted">{{file.accessed}}</div>
+                                    <div class="app-expressive-heading-01 truncate">{{property.name}}</div>
+                                    <div class="app-helper-text-01 mb-2">#{{property.code}}</div>
+                                    <div class="flex justify-between">
+                                        <div class="app-label-01 text-muted">
+                                            <youpez-ibm-icon class="location-icon"  iconName="location" iconSize="16"></youpez-ibm-icon>
+                                            <span class="location-zone ml-1">{{property.location}}</span>
+                                        </div>
+                                        <div class="app-label-01 text-muted">                                            
+                                            <span class="mr-1">0</span>
+                                            <youpez-ibm-icon class="location-icon" iconName="home" iconSize="16"></youpez-ibm-icon>
+                                        </div>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
