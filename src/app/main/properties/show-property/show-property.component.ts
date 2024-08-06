@@ -7,6 +7,7 @@ import { PropertyAction, PropertyModel, PropertyState } from 'src/app/shared/sto
 import { AddPropertyRoomComponent } from '../components/add-property-room/add-property-room.component';
 import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { AddPropertyComponent } from '../add-property/add-property.component';
+import { AddPropertyLocataireComponent } from '../components/add-property-locataire/add-property-locataire.component';
 
 @Component({
   selector: 'app-show-property',
@@ -21,7 +22,7 @@ export class ShowPropertyComponent implements OnInit {
   propertyFound:PropertyModel = null;
   propertyFound$:Observable<PropertyModel>;
   waittingResponseDeleteProperty = false;
-  private addPropertyRoomDialogRef: MatDialogRef<AddPropertyRoomComponent>;
+  private addPropertyRoomDialogRef: MatDialogRef<AddPropertyRoomComponent | AddPropertyLocataireComponent>;
   
   public isDetailsOpened: boolean = false
   public leftSidebarVisibility: boolean = true
@@ -85,11 +86,28 @@ export class ShowPropertyComponent implements OnInit {
   }
 
   onCreate() {
-    this.addPropertyRoomDialogRef = this.dialog.open(AddPropertyRoomComponent, {
-      viewContainerRef:null,
-      disableClose: true,
-      role: 'alertdialog',
-      width: '500px'
-    })
+    switch (this._activatedRoute.snapshot.firstChild.data.breadcrumb) {
+      case 'locataires':
+        this.addPropertyRoomDialogRef = this.dialog.open(AddPropertyLocataireComponent, {
+          viewContainerRef:null,
+          disableClose: true,
+          role: 'alertdialog',
+          width: '500px'
+        })
+        return null
+      case 'finances':
+        return "Vos finances"
+      case 'chambres':
+        this.addPropertyRoomDialogRef = this.dialog.open(AddPropertyRoomComponent, {
+          viewContainerRef:null,
+          disableClose: true,
+          role: 'alertdialog',
+          width: '500px'
+        })
+        return null;
+      default:
+        break;
+    }
+    
   }
 }

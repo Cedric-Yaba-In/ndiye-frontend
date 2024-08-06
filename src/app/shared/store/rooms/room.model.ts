@@ -1,7 +1,7 @@
 export enum RoomType 
 {
     ROOM = "room",
-    STUDIO = "STUDIO",
+    STUDIO = "studio",
     SIMPLE_APARTMENT = "simple_apartment",
     FURNISHED_APARTMENT = "furnished_apartment"
 }

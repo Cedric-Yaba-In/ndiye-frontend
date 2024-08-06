@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { getDummyModel } from '@youpez/data/dummy';
 
 @Component({
   selector: 'app-property-locataire',
@@ -6,10 +8,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./property-locataire.component.scss']
 })
 export class PropertyLocataireComponent implements OnInit {
-
-  constructor() { }
+  
+  propertyId=null;
+  constructor(
+    private _activatedRoute: ActivatedRoute,
+    private _router:Router,
+  ) { }
 
   ngOnInit(): void {
+    this.propertyId = this._activatedRoute.parent.snapshot.paramMap.get('id');
+    if(!this.propertyId)  {
+      this._router.navigateByUrl('/app/properties/list');;
+      return;
+    }
   }
 
 }

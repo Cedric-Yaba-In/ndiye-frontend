@@ -21,7 +21,8 @@ export class LocataireStateModel {
         locataires:[{
             fullName:"Cedric Nguendap",
             id:"1",
-            propertyId:"1204",
+            roomId:"1204",
+            propertyId:"",
             email:"XXXXXXXXXXXXXXXXXXXXXXXXX",
             phoneNumber:"771234567"
         }],

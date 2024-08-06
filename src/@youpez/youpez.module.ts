@@ -163,7 +163,8 @@ import {
   SliderModule,
   NumberModule,
   FileUploaderModule, ProgressIndicatorModule, ModalModule,
-  LoadingModule
+  LoadingModule,
+   
 } from 'carbon-components-angular'
 
 import {AppMenuComponent} from "./components/app-menu/app-menu/app-menu.component"

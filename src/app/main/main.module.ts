@@ -21,6 +21,9 @@ import { PropertyRoomComponent } from './properties/components/property-room/pro
 import { PropertyFinanceComponent } from './properties/components/property-finance/property-finance.component';
 import { PropertyLocataireComponent } from './properties/components/property-locataire/property-locataire.component';
 import { AddPropertyRoomComponent } from './properties/components/add-property-room/add-property-room.component'
+import { LocatairePropertyModule } from './properties/components/locataire-property/locataire-property.module';
+import { AddPropertyLocataireComponent } from './properties/components/add-property-locataire/add-property-locataire.component';
+import { FinancialHistoryComponent } from './properties/components/financial-history/financial-history.component'
 
 @NgModule({
   declarations: [
@@ -36,7 +39,10 @@ import { AddPropertyRoomComponent } from './properties/components/add-property-r
     PropertyRoomComponent,
     PropertyFinanceComponent,
     PropertyLocataireComponent,
-    AddPropertyRoomComponent
+    AddPropertyRoomComponent,
+    AddPropertyLocataireComponent,
+    FinancialHistoryComponent,
+    
   ],
   imports: [
     CommonModule,
@@ -45,6 +51,7 @@ import { AddPropertyRoomComponent } from './properties/components/add-property-r
     SharedModule,
     ChartsModule,
     AgGridModule.withComponents([]),
+    LocatairePropertyModule
   ]
 })
 export class MainModule {

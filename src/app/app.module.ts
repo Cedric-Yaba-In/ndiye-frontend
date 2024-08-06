@@ -20,7 +20,6 @@ import {AppRoutingModule} from './app-routing.module'
 import {AppComponent} from './app.component'
 import {environment} from '../environments/environment'
 import { NgxsModule } from '@ngxs/store'
-import { LocataireState, PropertyState, RoomState, UserProfileState, UserState } from './shared/store';
 
 @NgModule({
   declarations: [
@@ -37,13 +36,7 @@ import { LocataireState, PropertyState, RoomState, UserProfileState, UserState }
 
     //Ngxs module
     NgxsModule.forRoot(
-      [
-        UserProfileState,
-        UserState,
-        PropertyState,
-        RoomState,
-        LocataireState
-      ] , {
+      [] , {
         developmentMode: !environment.production
       }),
 
